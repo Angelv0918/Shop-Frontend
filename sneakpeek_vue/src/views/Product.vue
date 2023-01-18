@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { toStatement } from "@babel/types";
+import { toast } from 'bulma-toast'
 import axios from "axios";
 
 export default {
