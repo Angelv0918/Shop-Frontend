@@ -7,19 +7,20 @@
         </figure>
         <h1 class="title">{{ product.name }}</h1>
 
-        <p>{{ product.size }}</p>
+       
       </div>
 
       <div class="column is-3">
         <h2 class="subtitle">Information</h2>
-
+    <p>Size: {{ product.size }}</p>
+    <br/>
         <p><strong>Price: </strong> ${{ product.price }}</p>
         <div class="field has-addons mt-6">
           <div class="control">
             <input type="number" class="input" min="1" v-model="quantity" />
           </div>
           <div class="control">
-            <a class="button is-dark">Add to cart</a>
+            <a class="button is-dark" @click="addToCart">Add to cart</a>
           </div>
         </div>
       </div>
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import { toStatement } from "@babel/types";
 import axios from "axios";
 
 export default {
@@ -54,7 +56,28 @@ export default {
             .catch(error => {
                 console.log(error)
             })
-    }
+        
+    },
+        addToCart() {
+            if(isNaN(this.quantity) || this.quantity < 1) {
+                this.quantity = 1
+            }
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+
+            this.$store.commit('addToCart', item)
+
+            toast({
+                message: 'Sneaker was added to the cart',
+                type: 'is-success',
+                dismissible:true,
+                pauseOnHover:true,
+                duration: 2000,
+                position: 'bottom-right'
+            })
+        }
   }
 };
 </script>
