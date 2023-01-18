@@ -53,14 +53,15 @@ export default {
         
     },
     methods: {
-        async submitForm() {
+        submitForm() {
             axios.defaults.headers.common["Authorization"] = ""
             localStorage.removeItem("token")
             const formData = {
                 username: this.username,
                 password: this.password
-            } 
-            await axios
+            }
+            // } freecodecamp
+            axios
                 .post("/api/v1/token/login/", formData)
                 .then(response => {
                     const token = response.data.auth_token

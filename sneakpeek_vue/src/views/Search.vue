@@ -8,49 +8,48 @@
             </div>
 
             <ProductBox 
-   v-for="product in category.products"
-   v-bind:key="product.id"
-   v-bind:product="product" />
-
+                v-for="product in products"
+                v-bind:key="product.id"
+                v-bind:product="product" />
         </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import ProductBox from '@/components/ProductBox.vue';
-
+import ProductBox from '@/components/ProductBox.vue'
 export default {
     name: 'Search',
     components: {
         ProductBox
     },
     data() {
-        return{
+        return {
             products: [],
             query: ''
         }
     },
     mounted() {
+        
         let uri = window.location.search.substring(1)
         let params = new URLSearchParams(uri)
-
-        if(params.get('query')) {
+        if (params.get('query')) {
             this.query = params.get('query')
-
             this.performSearch()
         }
     },
     methods: {
-        performSearch() {
-            axios
-                .post('api/v1/products/search/', {'query': this.query})
+        async performSearch() {
+           
+            await axios
+                .post('/api/v1/products/search/', {'query': this.query})
                 .then(response => {
-                    this,products = response.data
+                    this.products = response.data
                 })
                 .catch(error => {
-                    console.error(error)
+                    console.log(error)
                 })
+            this.$store.commit('setIsLoading', false)
         }
     }
 }

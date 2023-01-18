@@ -33,7 +33,7 @@ export default {
   mounted() {
     this.getCategory();
   },
-//   makes sure category swithces smooth
+//   makes sure category switches smooth
   watch: {
     $route(to, from) {
         if (to.name === 'Category') {
