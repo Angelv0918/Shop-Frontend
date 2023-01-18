@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="control">
-                  <button class="button is-success">
+                  <button class="button is-link">
                     <span class="icon">
                       <i class="fas fa-search"></i>
                     </span>
@@ -46,7 +46,7 @@
               <template v-else>
                 <router-link to="/log-in" class="button is-light">Log in</router-link>
               </template>
-              <router-link to="/cart" class="button is-success">
+              <router-link to="/cart" class="button is-link">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                 <span>Cart({{ cartTotalLength }})</span>
               </router-link>
