@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-  <div class="column is-3 ">
+  <div class="column is-3">
     <div class="box ">
       <figure class="image mb-4">
         <img v-bind:src="product.get_thumbnail">
