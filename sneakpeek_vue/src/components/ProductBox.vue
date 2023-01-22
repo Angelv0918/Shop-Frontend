@@ -1,6 +1,5 @@
 <template>
-  <div class="columns ">
-  <div class="column is-3 ">
+  <div class="column is-3">
     <div class="box ">
       <figure class="image mb-4">
         <img v-bind:src="product.get_thumbnail">
@@ -12,8 +11,7 @@
       <router-link
         v-bind:to="product.get_absolute_url"
         class="button is-dark mt-4"
-        >View details</router-link
-      ></div>
+        >View details</router-link>
     </div>
   </div>
 </template>
