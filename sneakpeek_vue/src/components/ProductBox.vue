@@ -1,6 +1,6 @@
 <template>
-  <div class="columns is-multiline is-vcentered">
-  <div class="column is-one-third ">
+  <div class="columns ">
+  <div class="column is-3 ">
     <div class="box ">
       <figure class="image mb-4">
         <img v-bind:src="product.get_thumbnail">
